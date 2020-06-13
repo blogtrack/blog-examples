@@ -1,0 +1,17 @@
+{
+  "name": "hugo-npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run hugo:build",
+    "clean": "npm run hugo:clean",
+    "serve": "npm run hugo:serve",
+    "hugo:build": "hugo -d build",
+    "hugo:serve": "hugo server",
+    "hugo:clean": "rm -rf build resources public"
+  },
+  "author": "",
+  "license": "ISC",
+
+}
