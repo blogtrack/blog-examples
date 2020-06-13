@@ -1,0 +1,30 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Checkout sources"
+      uses: actions/checkout@v1
+    - name: "Setup Node"
+      uses: actions/setup-node@v2-beta
+    - name: "Install NPM dependencies"
+      run: npm install
+    - name: "Run Gradle build"
+      run: chmod 755 gradlew && ./gradlew build
+      env:
+        # We don't actually need AWS credentials in the tests, but the AWS SDK
+        # complains if they're not there, so we add dummies to the environment.
+        AWS_ACCESS_KEY_ID: ${{ secrets.DUMMY_AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_KEY: ${{ secrets.DUMMY_AWS_SECRET_KEY }}
+    - name: "Zip build reports"
+      if: failure()
+      run: zip -r reports.zip **/build/reports
+    - uses: actions/upload-artifact@v1
+      name: "Upload build reports"
+      if: failure()
+      with:
+        name: reports
+        path: reports.zip
