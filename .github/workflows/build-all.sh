@@ -28,4 +28,4 @@ build_npm_project() {
   }
 }
 
-build_npm_project ../../hugo/hugo-npm
+build_npm_project hugo/hugo-npm
