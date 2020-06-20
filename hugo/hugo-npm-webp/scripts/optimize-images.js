@@ -12,7 +12,7 @@ const imageminWebp = require("imagemin-webp");
  */
 function convertFullImages(){
     return imagemin(['raw-images/*.{jpg,png}'], {
-		destination: 'static/assets/generated/full',
+		destination: 'static/generated/full',
 		plugins: [
 			imageminWebp()
 		]
@@ -24,7 +24,7 @@ function convertFullImages(){
  */
 function convertPreviewImages(){
     return imagemin(['raw-images/*.{jpg,png}'], {
-        destination: 'static/assets/generated/preview',
+        destination: 'static/generated/preview',
         plugins: [
             imageminWebp({
                 resize: {
