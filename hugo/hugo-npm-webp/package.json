@@ -1,0 +1,25 @@
+{
+  "name": "hugo-npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run images:optimize && npm run hugo:build",
+    "clean": "npm run hugo:clean",
+    "serve": "npm run images:optimize && npm run hugo:serve",
+    "hugo:build": "hugo -d build",
+    "hugo:serve": "hugo server",
+    "hugo:clean": "rm -rf build resources public",
+    "images:optimize": "node scripts/optimize-images.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "hugo-bin": "^0.60.0",
+    "imagemin": "^7.0.1",
+    "imagemin-webp": "^6.0.0"
+  }
+}

@@ -13,7 +13,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "hugo-bin": "^0.60.0"
   }
 }
